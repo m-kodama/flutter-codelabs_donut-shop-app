@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/core/app_colors.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/core/image_urls.dart';
-import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/page/donut_shop_main.dart';
+import 'package:flutter_codelab_donut_shop_app/ui/core/navigation.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -31,11 +31,7 @@ class _SplashPageState extends State<SplashPage>
     );
 
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => const DonutShopMain(),
-        ),
-      );
+      Navigation.mainAppNav.currentState!.pushReplacementNamed('/main');
     });
   }
 
