@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codelab_donut_shop_app/ui/core/navigation.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/state_holder/mock_data.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/state_holder/state/donut_model.dart';
 
@@ -10,10 +11,20 @@ class DonutService extends ChangeNotifier {
   ];
   String? selectedDonutType;
   List<DonutModel> filteredDonuts = [];
+  late DonutModel selectedDonut;
 
   DonutService() {
     selectedDonutType = filterBarItems.first.id;
     filteredDonutsByType(selectedDonutType!);
+  }
+
+  DonutModel getSelectedDonut() {
+    return selectedDonut;
+  }
+
+  void onDonutSelected(DonutModel donut) {
+    selectedDonut = donut;
+    Navigation.mainAppNav.currentState!.pushNamed('/details');
   }
 
   void filteredDonutsByType(String type) {
