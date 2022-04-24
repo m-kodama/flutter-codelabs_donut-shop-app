@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/core/app_colors.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/core/image_urls.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/state_holder/donut_service.dart';
+import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/state_holder/donut_shopping_cart_service.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/state_holder/state/donut_model.dart';
+import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/widget/donut_shopping_cart_badge.dart';
 import 'package:provider/provider.dart';
 
 class DonutShopDetails extends StatefulWidget {
@@ -47,6 +49,9 @@ class _DonutShopDetailsState extends State<DonutShopDetails>
           width: 120,
           child: Image.network(ImageUrls.donutLogoRedText),
         ),
+        actions: [
+          DonutShoppingCartBadge(),
+        ],
       ),
       body: Stack(
         children: [
@@ -137,32 +142,68 @@ class _DonutShopDetailsState extends State<DonutShopDetails>
                           Text(selectedDonut!.description),
                           const SizedBox(height: 20),
                           // カートに追加ボタン
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 10,
-                              horizontal: 20,
-                            ),
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: AppColors.mainDark.withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                Icon(
-                                  Icons.shopping_cart,
-                                  color: AppColors.mainDark,
-                                ),
-                                SizedBox(width: 20),
-                                Text(
-                                  'Add To Cart',
-                                  style: TextStyle(
-                                    color: AppColors.mainDark,
+                          Consumer<DonutShoppingCartService>(
+                            builder: (context, cartService, child) {
+                              if (!cartService.isDonutInCart(selectedDonut!)) {
+                                // カートに追加ボタン
+                                return GestureDetector(
+                                  onTap: () {
+                                    cartService.addToCart(selectedDonut!);
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 10,
+                                      horizontal: 20,
+                                    ),
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      color:
+                                          AppColors.mainDark.withOpacity(0.1),
+                                      borderRadius: BorderRadius.circular(50),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: const [
+                                        Icon(
+                                          Icons.shopping_cart,
+                                          color: AppColors.mainDark,
+                                        ),
+                                        SizedBox(width: 20),
+                                        Text(
+                                          'Add To Cart',
+                                          style: TextStyle(
+                                            color: AppColors.mainDark,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
+                                );
+                              }
+
+                              // カート追加済みテキスト
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    Icon(
+                                      Icons.check_rounded,
+                                      color: AppColors.mainDark,
+                                    ),
+                                    SizedBox(width: 20),
+                                    Text(
+                                      'Added to Cart',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.mainDark,
+                                      ),
+                                    )
+                                  ],
                                 ),
-                              ],
-                            ),
+                              );
+                            },
                           ),
                         ],
                       ),

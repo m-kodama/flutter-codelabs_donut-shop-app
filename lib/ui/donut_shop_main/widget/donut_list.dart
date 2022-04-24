@@ -29,7 +29,7 @@ class _DonutListState extends State<DonutList> {
       future = future.then((_) {
         return Future.delayed(const Duration(milliseconds: 125), () {
           insertedItems.add(widget.donuts[i]);
-          _key.currentState!.insertItem(i);
+          _key.currentState?.insertItem(i);
         });
       });
     }

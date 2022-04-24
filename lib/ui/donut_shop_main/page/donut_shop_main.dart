@@ -3,6 +3,7 @@ import 'package:flutter_codelab_donut_shop_app/ui/core/app_colors.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/core/image_urls.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/core/navigation.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/page/donut_main_page.dart';
+import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/page/donut_shopping_cart_page.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/widget/donut_bottom_bar.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/widget/donut_side_menu.dart';
 
@@ -39,7 +40,7 @@ class DonutShopMain extends StatelessWidget {
                     page = Center(child: Text('favorites'));
                     break;
                   case '/shoppingCart':
-                    page = Center(child: Text('shoppingCart'));
+                    page = const DonutShoppingCartPage();
                     break;
                   default:
                     page = const DonutMainPage();

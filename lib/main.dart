@@ -4,6 +4,7 @@ import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/page/donut_sho
 import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/page/donut_shop_main.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/state_holder/donut_bottom_bar_selection_service.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/state_holder/donut_service.dart';
+import 'package:flutter_codelab_donut_shop_app/ui/donut_shop_main/state_holder/donut_shopping_cart_service.dart';
 import 'package:flutter_codelab_donut_shop_app/ui/splash/page/splash_page.dart';
 import 'package:provider/provider.dart';
 
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => DonutService(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => DonutShoppingCartService(),
         ),
       ],
       child: MaterialApp(
