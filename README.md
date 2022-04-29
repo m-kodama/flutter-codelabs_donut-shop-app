@@ -1,16 +1,17 @@
-# flutter_codelab_donut_shop_app
+# FLUTTER CODELABS / DONUT SHOP APP
 
-A new Flutter project.
+- https://romanjustcodes.web.app/#/workshops
 
-## Getting Started
+| | | |
+| --- | --- | --- |
+| ![splash](https://user-images.githubusercontent.com/28724739/165954092-ae385597-2c9b-40aa-9bbf-c498a26f5360.png) | ![donut_shop](https://user-images.githubusercontent.com/28724739/165954086-0fa2dc8c-6130-4d92-b854-f55b46e7b82d.png) | ![donut_detail](https://user-images.githubusercontent.com/28724739/165954082-77a7185e-a7e7-4159-8eed-7036245b548a.png) | |![cart](https://user-images.githubusercontent.com/28724739/165954062-d4bf8ca9-4ed9-43d3-b82c-87e2580c93b8.png) |
 
-This project is a starting point for a Flutter application.
+## Development💻
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter 2.10.3
+- Dart 2.16.1 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Getting Started🚀
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- `flutter pub get`
+- `flutter run`
